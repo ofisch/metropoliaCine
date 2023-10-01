@@ -55,7 +55,8 @@
     "picomatch": "^2.3.1",
     "pify": "^2.3.0",
     "pirates": "^4.0.6",
-    "postcss": "^8.4.30",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
     "postcss-import": "^15.1.0",
     "postcss-js": "^4.0.1",
     "postcss-load-config": "^4.0.1",
@@ -82,7 +83,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx tailwindcss -i ./public/input.css -o ./dist/output.css --watch"
+    "dev": "npx tailwindcss -i ./public/input.css -o ./dist/output.css --watch",
+    "build:css": "postcss ./public/input.css -o ./public/styles.css"
   },
   "repository": {
     "type": "git",

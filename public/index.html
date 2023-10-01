@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="styles.css" rel="stylesheet" />
     <link href="/dist/output.css" rel="stylesheet" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
@@ -11,7 +12,26 @@
     <title>Metropolia Cine</title>
   </head>
   <body>
-    <h1>Metropolia Cine</h1>
+    <div class="grid gap-3 px-2 py-2 bg-gunmetal">
+      <nav class="flex flex-row items-center h-16 border">
+        <button class="ml-2">≡</button>
+        <p class="ml-2">Metropolia Cine</p>
+      </nav>
+      <header class="flex flex-col border items-center justify-center h-60">
+        <h1>Metropolia Cine</h1>
+        <h2>hieno tapahtuma</h2>
+      </header>
+      <main class="h-96 px-3 flex flex-col items-center justify-center border">
+        <h3>wautsi</h3>
+        <p class="text-center">
+          main sisältöö - Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Excepturi natus assumenda.
+        </p>
+      </main>
+      <footer class="h-24 flex items-center justify-center border">
+        <p>footer</p>
+      </footer>
+    </div>
 
     <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
