@@ -41,13 +41,22 @@ joinForm.addEventListener("submit", (event) => {
 });
 
 socket.on("chat message", (msg) => {
-  let chatMessage = document.createElement("li");
+  let msgElement = document.createElement("li");
 
-  chatMessage.innerHTML = `<li class="flex py-2">
-    <p class="p-3 font-bold text-white">${msg.nickname}: </p>
-    <p class="p-3 bg-blue rounded-r-lg rounded-bl-lg">${msg.msg}</p>
-  </li>`;
+  let msgSender = document.createElement("p");
+  msgSender.classList.add("p-3", "font-bold", "text-white");
 
-  document.getElementById("messages").appendChild(chatMessage);
+  let msgData = document.createElement("p");
+  msgData.classList.add("p-3", "bg-blue", "rounded-r-lg", "rounded-bl-lg");
+
+  // innerText, jotta syöte luetaan tekstinä (ei esim. html)
+  msgSender.innerText = msg.nickname;
+  msgData.innerText = msg.msg;
+
+  msgElement.classList.add("flex", "py-2");
+  msgElement.appendChild(msgSender);
+  msgElement.appendChild(msgData);
+
+  document.getElementById("messages").appendChild(msgElement);
   document.getElementById("messages").scrollTo(0, messages.scrollHeight);
 });
