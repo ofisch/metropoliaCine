@@ -22,8 +22,9 @@ module.exports = {
       colors: {
         tangerine: "#e67d1c",
         gunmetal: "#292F36",
-        blue: "#4ECDC4",
+        blue: "#99C7FF",
         white: "#FFFFFF",
+        secondary: "#69788C",
       },
     },
   },
