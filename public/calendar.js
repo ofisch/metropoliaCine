@@ -1,4 +1,4 @@
-function generateCalendar(year, month) {
+const generateCalendar = (year, month) => {
   const startDate = new Date(year, month, 1);
   const endDate = new Date(year, month + 1, 0);
   const daysInMonth = endDate.getDate();
@@ -129,7 +129,7 @@ function generateCalendar(year, month) {
 
     calendarDiv.appendChild(dateContainer);
   }
-}
+};
 
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();

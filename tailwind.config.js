@@ -20,11 +20,14 @@ module.exports = {
         "2xl": "1536px",
       },
       colors: {
-        tangerine: "#e67d1c",
+        tangerine: "#EF5D60",
         gunmetal: "#292F36",
-        blue: "#99C7FF",
+        blue: "#59C3C3",
         white: "#FFFFFF",
-        secondary: "#69788C",
+        secondary: "#DAD2D8",
+      },
+      backgroundImage: {
+        testi: "url('/public/images/porsche992gt3.jpg')",
       },
     },
   },
