@@ -54,6 +54,17 @@ socket.on("chat message", (msg) => {
   msgData.innerText = msg.msg;
 
   msgElement.classList.add("flex", "py-2");
+
+  msgData.classList.add(
+    "transition",
+    "ease-in-out",
+    "delay-70",
+    "hover:-translate-y-1",
+    "hover:scale-110",
+    "hover:opacity-75",
+    "duration-70"
+  );
+
   msgElement.appendChild(msgSender);
   msgElement.appendChild(msgData);
 
