@@ -62,7 +62,9 @@ socket.on("chat message", (msg) => {
     "hover:-translate-y-1",
     "hover:scale-110",
     "hover:opacity-75",
-    "duration-70"
+    "duration-70",
+    "overflow-auto",
+    "max-w-xs"
   );
 
   msgElement.appendChild(msgSender);
