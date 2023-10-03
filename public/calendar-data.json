@@ -4,7 +4,7 @@
       "year": 2023,
       "month": 10,
       "time": "12.00",
-      "event": "testing"
+      "event": "calendar testing"
     },
     {
       "year": 2023,
@@ -13,12 +13,26 @@
       "event": "more testing"
     }
   ],
+  "3": [
+    {
+      "year": 2023,
+      "month": 10,
+      "time": "2.42",
+      "event": "TOIMII"
+    },
+    {
+      "year": 2023,
+      "month": 10,
+      "time": "13.00",
+      "event": "Vierailu Suora Broadcast"
+    }
+  ],
   "11": [
     {
       "year": 2023,
       "month": 10,
       "time": "9.00 - 16.00",
-      "event": "Live opening"
+      "event": "Live opening!"
     }
   ],
   "15": [

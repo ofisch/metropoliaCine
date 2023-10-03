@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const monthNames = [
     "January",
     "February",
@@ -74,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "py-2",
             "text-center",
             "h-28",
-            "overflow-y-auto",
             "rounded",
             "border",
             "border-transparent",
@@ -100,15 +99,22 @@ document.addEventListener("DOMContentLoaded", function () {
             );
           }
 
+          const events = eventMap[day];
           if (
-            eventMap[day] &&
-            eventMap[day][0].month === currentMonth + 1 &&
-            eventMap[day][0].year === currentYear
+            events &&
+            events.some(
+              (event) =>
+                event.month === currentMonth + 1 && event.year === currentYear
+            )
           ) {
-            const events = eventMap[day];
             const eventHtml = events
+              .filter(
+                (event) =>
+                  event.month === currentMonth + 1 && event.year === currentYear
+              )
               .map((event) => {
                 return `
+                <div class="w-full h-16 overflow-y-auto rounded-lg">
                   <div class="w-11/12 mt-1 text-sm bg-event rounded mx-auto text-primary">
                     <p class="text-center">${event.time}</p>
                     <p class="text-center">${event.event}</p>
@@ -138,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateCalendar();
 
-  prevMonthButton.addEventListener("click", function () {
+  prevMonthButton.addEventListener("click", () => {
     currentMonth--;
     if (currentMonth < 0) {
       currentMonth = 11;
@@ -148,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
     selectMonth.value = currentMonth;
   });
 
-  nextMonthButton.addEventListener("click", function () {
+  nextMonthButton.addEventListener("click", () => {
     currentMonth++;
     if (currentMonth > 11) {
       currentMonth = 0;
@@ -158,14 +164,14 @@ document.addEventListener("DOMContentLoaded", function () {
     selectMonth.value = currentMonth;
   });
 
-  currentMonthButton.addEventListener("click", function () {
+  currentMonthButton.addEventListener("click", () => {
     currentYear = currentDate.getFullYear();
     currentMonth = currentDate.getMonth();
     updateCalendar();
     selectMonth.value = currentMonth;
   });
 
-  selectMonth.addEventListener("change", function () {
+  selectMonth.addEventListener("change", () => {
     currentMonth = parseInt(selectMonth.value);
     updateCalendar();
   });
