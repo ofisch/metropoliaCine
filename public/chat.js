@@ -7,6 +7,7 @@ const currentRoom = "movie1";
 const user = document.getElementById("username");
 const joinForm = document.getElementById("join-form");
 const msgForm = document.getElementById("msg-form");
+const msgButton = document.getElementById("msg-button");
 const usernameInput = joinForm.getElementsByTagName("input")[0];
 const messageInput = msgForm.getElementsByTagName("input")[0];
 
@@ -25,6 +26,8 @@ msgForm.addEventListener("submit", (event) => {
   }
 });
 
+//   onclick="document.getElementById('message').value += document.getElementById('emoji').value;"
+
 joinForm.addEventListener("submit", (event) => {
   event.preventDefault();
   if (user.value) {
@@ -36,6 +39,7 @@ joinForm.addEventListener("submit", (event) => {
     joinForm.classList.add("hidden");
     msgForm.classList.remove("hidden");
     msgForm.classList.add("flex");
+
     messageInput.focus();
   }
 });
