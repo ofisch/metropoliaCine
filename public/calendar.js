@@ -32,12 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const calendarDiv = document.getElementById("calendar");
 
   const getInfo = async () => {
-    let url = "https://users.metropolia.fi/~onnif/calendar-data.json";
     let proxyUrl = `https://corsproxy.io/?https%3A%2F%2Fusers.metropolia.fi%2F~onnif%2Fcalendar-data.json`;
 
     try {
       let res = await fetch(proxyUrl);
-      console.log("res: ", res);
       return await res.json();
     } catch (error) {
       console.log(error);
