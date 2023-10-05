@@ -47,8 +47,10 @@ joinForm.addEventListener("submit", (event) => {
 socket.on("retry", (data) => {
   alert(`nickname "${data}" already taken`);
 
+  // viesti-inputin piilotus
   msgForm.classList.remove("flex");
   msgForm.classList.add("hidden");
+  // login-form näkyviin
   joinForm.classList.remove("hidden");
   joinForm.classList.add("flex");
 });
@@ -57,15 +59,15 @@ socket.on("chat message", (msg) => {
   let msgElement = document.createElement("li");
 
   let msgSender = document.createElement("p");
-  msgSender.classList.add("p-3", "font-bold", "text-white");
+  msgSender.classList.add("p-3", "font-bold", "text-secondary");
 
   if (usernameInput.value === msg.nickname) {
-    msgSender.classList.remove("text-white");
-    msgSender.classList.add("text-tangerine");
+    msgSender.classList.remove("text-secondary");
+    msgSender.classList.add("text-action");
   }
 
   let msgData = document.createElement("p");
-  msgData.classList.add("p-3", "bg-blue", "rounded-r-lg", "rounded-bl-lg");
+  msgData.classList.add("p-3", "bg-event", "rounded-r-lg", "rounded-bl-lg");
 
   // innerText, jotta syöte luetaan tekstinä (ei esim. html)
   msgSender.innerText = msg.nickname;
