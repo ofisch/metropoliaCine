@@ -24,7 +24,7 @@
         <button
           data-collapse-toggle="navbar-solid-bg"
           type="button"
-          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-secondary rounded-lg md:hidden hover:ring-white hover:ring-2"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-secondary rounded-lg md:hidden hover:ring-secondary hover:ring-2"
           aria-controls="navbar-solid-bg"
           aria-expanded="false"
         >
@@ -45,7 +45,7 @@
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
           <ul
-            class="w-full flex flex-col font-medium mt-4 rounded-lg bg-white md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent absolute top-16 right-0 md:relative md:top-0 md:right-auto"
+            class="w-full flex flex-col font-medium mt-4 rounded-lg bg-secondary md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent absolute top-16 right-0 md:relative md:top-0 md:right-auto"
           >
             <li>
               <a
@@ -89,31 +89,44 @@
     </header>
 
     <main class="grid grid-cols-1 w-full mx-auto">
-      <h3 class="text-white text-center pt-20 text-2xl">Movies</h3>
+      <h3 class="text-secondary text-center pt-20 text-2xl">Movies</h3>
       <section class="w-full h-15 px-35">
         <div class="grid grid-cols-4 gap-4">
-          <div class="col-span-4 text-white text-center pt-20 text-2xl">
+          <div class="col-span-4 text-secondary text-center pt-20 text-2xl">
             <h2>Next movie starts in:</h2>
           </div>
           <div>
-            <h2 id="day" class="text-white text-center pt-20 text-2xl"></h2>
+            <h2 id="day" class="text-secondary text-center pt-20 text-2xl"></h2>
           </div>
           <div>
-            <h2 id="hour" class="text-white text-center pt-20 text-2xl"></h2>
+            <h2
+              id="hour"
+              class="text-secondary text-center pt-20 text-2xl"
+            ></h2>
           </div>
           <div>
-            <h2 id="minute" class="text-white text-center pt-20 text-2xl"></h2>
+            <h2
+              id="minute"
+              class="text-secondary text-center pt-20 text-2xl"
+            ></h2>
           </div>
           <div>
-            <h2 id="second" class="text-white text-center pt-20 text-2xl"></h2>
-          </div>
-          <div><h2 class="text-white text-center pt-20 text-2xl">Day</h2></div>
-          <div><h2 class="text-white text-center pt-20 text-2xl">Hour</h2></div>
-          <div>
-            <h2 class="text-white text-center pt-20 text-2xl">Minute</h2>
+            <h2
+              id="second"
+              class="text-secondary text-center pt-20 text-2xl"
+            ></h2>
           </div>
           <div>
-            <h2 class="text-white text-center pt-20 text-2xl">Second</h2>
+            <h2 class="text-secondary text-center pt-20 text-2xl">Day</h2>
+          </div>
+          <div>
+            <h2 class="text-secondary text-center pt-20 text-2xl">Hour</h2>
+          </div>
+          <div>
+            <h2 class="text-secondary text-center pt-20 text-2xl">Minute</h2>
+          </div>
+          <div>
+            <h2 class="text-secondary text-center pt-20 text-2xl">Second</h2>
           </div>
         </div>
       </section>
