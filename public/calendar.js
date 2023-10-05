@@ -31,6 +31,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const currentMonthButton = document.getElementById("currentMonth");
   const calendarDiv = document.getElementById("calendar");
 
+  const getInfo = async () => {
+    let url = "https://users.metropolia.fi/~onnif/calendar-data.json";
+    let proxyUrl = `https://corsproxy.io/?https%3A%2F%2Fusers.metropolia.fi%2F~onnif%2Fcalendar-data.json`;
+
+    try {
+      let res = await fetch(proxyUrl);
+      console.log("res: ", res);
+      return await res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   function isOngoingMonth(year, month) {
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
@@ -39,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return year === currentYear && month === currentMonth;
   }
 
-  generateCalendar = (year, month) => {
+  const generateCalendar = async (year, month) => {
     calendarDiv.innerHTML = "";
     const startDate = new Date(year, month, 1);
     const endDate = new Date(year, month + 1, 0);
@@ -64,72 +77,68 @@ document.addEventListener("DOMContentLoaded", function () {
       calendarDiv.innerHTML += `<div></div>`;
     }
 
-    fetch("calendar-data.json")
-      .then((response) => response.json())
-      .then((data) => {
-        const eventMap = data;
-        for (let day = 1; day <= daysInMonth; day++) {
-          const dateContainer = document.createElement("div");
-          dateContainer.classList.add(
-            "py-2",
-            "text-center",
-            "h-28",
-            "overflow-y-auto",
-            "rounded",
-            "border",
-            "border-transparent",
-            "hover:border",
-            "hover:border-action",
-            "transition",
-            "ease-in-out",
-            "duration-300"
-          );
+    let info = await getInfo();
 
-          if (day === currentDay && isOngoingMonth(year, currentMonth)) {
-            dateContainer.classList.remove(
-              "border",
-              "border-transparent",
-              "hover:border",
-              "hover:border-action"
-            );
-            dateContainer.classList.add(
-              "border",
-              "border-2",
-              "border-action",
-              "rounded"
-            );
-          }
+    const eventMap = info;
 
-          if (
-            eventMap[day] &&
-            eventMap[day][0].month === currentMonth + 1 &&
-            eventMap[day][0].year === currentYear
-          ) {
-            const events = eventMap[day];
-            const eventHtml = events
-              .map((event) => {
-                return `
-                  <div class="w-11/12 mt-1 text-sm bg-event rounded mx-auto text-primary">
-                    <p class="text-center">${event.time}</p>
-                    <p class="text-center">${event.event}</p>
-                  </div>
-                `;
-              })
-              .join("");
-            dateContainer.innerHTML = `
-              <div>${day}</div>
-              ${eventHtml}
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dateContainer = document.createElement("div");
+      dateContainer.classList.add(
+        "py-2",
+        "text-center",
+        "h-28",
+        "overflow-y-auto",
+        "rounded",
+        "border",
+        "border-transparent",
+        "hover:border",
+        "hover:border-action",
+        "transition",
+        "ease-in-out",
+        "duration-300"
+      );
+
+      if (day === currentDay && isOngoingMonth(year, currentMonth)) {
+        dateContainer.classList.remove(
+          "border",
+          "border-transparent",
+          "hover:border",
+          "hover:border-action"
+        );
+        dateContainer.classList.add(
+          "border",
+          "border-2",
+          "border-action",
+          "rounded"
+        );
+      }
+
+      if (
+        eventMap[day] &&
+        eventMap[day][0].month === currentMonth + 1 &&
+        eventMap[day][0].year === currentYear
+      ) {
+        const events = eventMap[day];
+        const eventHtml = events
+          .map((event) => {
+            return `
+              <div class="w-11/12 mt-1 text-sm bg-event rounded mx-auto text-primary">
+                <p class="text-center">${event.time}</p>
+                <p class="text-center">${event.event}</p>
+              </div>
             `;
-          } else {
-            dateContainer.innerText = day;
-          }
+          })
+          .join("");
+        dateContainer.innerHTML = `
+          <div>${day}</div>
+          ${eventHtml}
+        `;
+      } else {
+        dateContainer.innerText = day;
+      }
 
-          calendarDiv.appendChild(dateContainer);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching JSON file:", error);
-      });
+      calendarDiv.appendChild(dateContainer);
+    }
   };
 
   updateCalendar = () => {
