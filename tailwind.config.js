@@ -20,10 +20,9 @@ module.exports = {
         "2xl": "1536px",
       },
       colors: {
-        tangerine: "#EF5D60",
-        gunmetal: "#292F36",
-        blue: "#59C3C3",
-        white: "#FFFFFF",
+        action: "#EF5D60",
+        primary: "#292F36",
+        event: "#59C3C3",
         secondary: "#DAD2D8",
       },
       backgroundImage: {
