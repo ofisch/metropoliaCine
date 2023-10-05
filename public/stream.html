@@ -94,7 +94,7 @@
     </nav>
 
     <main
-      class="flex flex-col md:flex-row border md:justify-start justify-center text-secondary py-2 gap-3"
+      class="max-w-5xl lg:mx-auto flex flex-col md:flex-row border md:justify-start justify-center text-secondary py-2 gap-3"
     >
       <header class="md:hidden">
         <h1 class="text-secondary p-4 text-xl font-semibold whitespace-nowrap">
@@ -300,7 +300,6 @@
             >
             <button x-ref="button"     
             x-on:click="toggle()"
-      
             :aria-expanded="open"
             :aria-controls="$id('dropdown-button')"
             type="button" class="text-secondary bg-transparent border text-sm rounded-lg focus:ring-blue focus:border-blue block p-2.5"><span x-text="input"></span>
@@ -315,7 +314,7 @@
              x-on:click.outside="close($refs.button)"
              :id="$id('dropdown-button')"
              style="display: none; width: 24.85rem; top: -14rem; left: auto; right: 0;"
-             class="absolute left-0 mt-2 p-4 max-h-64 bg-white shadow-md overflow-scroll rounded"
+             class="absolute left-0 mt-2 p-4 max-h-64 bg-secondary shadow-md overflow-scroll rounded"
          >
              <input type="search" onclick="emojiPicker = false" x-model="search" class="h-10 w-full px-2 mb-2 text-sm border border-1 border-slate-200 bg-gray-50 rounded-md placeholder:text-gray-500" placeholder="Search an emoji...">
              <template x-for="(emoji, keywords) in filteredEmojis" :key="emoji">
