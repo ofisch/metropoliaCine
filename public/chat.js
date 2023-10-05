@@ -44,11 +44,25 @@ joinForm.addEventListener("submit", (event) => {
   }
 });
 
+socket.on("retry", (data) => {
+  alert(`nickname "${data}" already taken`);
+
+  msgForm.classList.remove("flex");
+  msgForm.classList.add("hidden");
+  joinForm.classList.remove("hidden");
+  joinForm.classList.add("flex");
+});
+
 socket.on("chat message", (msg) => {
   let msgElement = document.createElement("li");
 
   let msgSender = document.createElement("p");
   msgSender.classList.add("p-3", "font-bold", "text-white");
+
+  if (usernameInput.value === msg.nickname) {
+    msgSender.classList.remove("text-white");
+    msgSender.classList.add("text-tangerine");
+  }
 
   let msgData = document.createElement("p");
   msgData.classList.add("p-3", "bg-blue", "rounded-r-lg", "rounded-bl-lg");

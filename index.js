@@ -12,6 +12,8 @@ const rooms = ["movie1", "movie2", "movie3"];
 const history = [];
 const client = [];
 
+var currentUserId;
+
 const getUserList = (roomName) => {
   let userList = "";
   for (const user of users) {
@@ -37,41 +39,60 @@ const deleteUserById = (socketId) => {
 };
 
 io.on("connection", (socket) => {
+  currentUserId = socket.id;
   console.log("a user connected", socket.id);
   socket.emit("rooms", rooms);
 
   socket.on("joinRoom", (data) => {
     const { roomName, nickname } = data;
-    users.push({ username: nickname, id: socket.id, roomName });
-    console.log(users);
 
-    if (rooms.includes(roomName) && nickname) {
-      if (socket.room) {
-        socket.leave(socket.room);
-      }
+    const isNicknameTaken = users.some((user) => user.username === nickname);
 
-      socket.join(roomName);
-      socket.room = roomName;
-      socket.nickname = nickname;
+    if (isNicknameTaken) {
+      console.log("nickname taken");
+      //alert("nickname taken");
 
-      socket.emit("message", `You joined ${roomName}`);
-      socket
-        .to(roomName)
-        .emit("message", `${socket.nickname} joined ${roomName}`);
+      socket.emit("retry", nickname);
+    } else {
+      users.push({ username: nickname, id: socket.id, roomName });
+      console.log(users);
 
-      socket.on("chat message", (msg) => {
-        console.log("message by: " + nickname, msg, " in ", roomName);
-        if (msg === "!users") {
-          socket.emit(
-            "chat message",
-            `Users online in ${roomName}: ${getUserList(roomName)}`
-          );
-        } else {
-          const messageData = { nickname: getUserName(socket.id), msg: msg };
-          io.to(roomName).emit("chat message", messageData);
+      if (rooms.includes(roomName) && nickname) {
+        if (socket.room) {
+          socket.leave(socket.room);
         }
-      });
+
+        socket.join(roomName);
+        socket.room = roomName;
+        socket.nickname = nickname;
+
+        socket.emit("message", `You joined ${roomName}`);
+        socket
+          .to(roomName)
+          .emit("message", `${socket.nickname} joined ${roomName}`);
+
+        socket.on("chat message", (msg) => {
+          console.log("message by: " + nickname, msg, " in ", roomName);
+          if (msg === "!users") {
+            socket.emit(
+              "chat message",
+              `Users online in ${roomName}: ${getUserList(roomName)}`
+            );
+          } else {
+            const messageData = {
+              nickname: getUserName(socket.id),
+              msg: msg,
+              id: socket.id,
+            };
+            io.to(roomName).emit("chat message", messageData);
+          }
+        });
+      }
     }
+  });
+
+  socket.on("retry", (data) => {
+    io.to(roomName).emit("retry", data);
   });
 
   io.sockets.on("connection", (socket) => {
