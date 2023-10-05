@@ -5,10 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="styles.css" rel="stylesheet" />
     <link href="/dist/output.css" rel="stylesheet" />
+    <link href="https://vjs.zencdn.net/8.5.2/video-js.css" rel="stylesheet" />
+    <link
+      href="https://unpkg.com/video.js@7/dist/video-js.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://vjs.zencdn.net/8.5.2/video.min.js" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="../node_modules/videojs-youtube/dist/Youtube.min.js"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
       rel="stylesheet"
     />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="chat.js" defer></script>
     <title>Metropolia Cine</title>
   </head>
   <body class="grid gap-3 py-2 bg-primary">
@@ -82,54 +92,285 @@
     </nav>
 
     <header
-      class="flex flex-col border items-center justify-center h-60 text-secondary"
+      class="max-w-screen-xl w-full flex flex-col md:flex-row md:justify-start text-secondary py-20 gap-3 justify-self-center"
     >
-      <h1>Metropolia Cine</h1>
-      <h2>hieno tapahtuma</h2>
+    <header class="md:hidden">
+      <h1 class="text-secondary p-4 text-xl font-semibold secondaryspace-nowrap">
+        Live seminar
+      </h1>
+    </header>
+    <div class="flex flex-col md:flex-row align-middle w-full gap-2">
+      <div class="md:pl-3 px-4 w-full">
+        <h1
+          class="hidden md:block text-secondary py-4 text-xl font-semibold secondaryspace-nowrap"
+        >
+        Live seminar
+        </h1>
+        <video
+          id="my-video"
+          controls
+          preload="auto"
+          poster="./images/porsche992gt3.jpg"
+          data-setup="{}"
+          class="video-js vjs-fluid vjs-big-play-centered aspect-video md:w-2/3"
+        >
+          <source
+            src="https://75ef2e1cdb7f.entrypoint.cloud.wowza.com/app-021t9h44/ngrp:e93671c3_all/playlist.m3u8"
+            type="application/x-mpegURL"
+          />
+          <source src="./video/ebin.mp4" type="video/mp4" />
+          <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider
+            upgrading to a web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank"
+              >supports HTML5 video</a
+            >
+          </p>
+        </video>
+      </div>
+
+      <section
+        class="md:w-2/3 md:justify-start md:items-start flex px-4 justify-center items-center"
+      >
+        <div class="w-full md:w-2/3">
+          <h1
+            class="hidden md:block text-secondary py-4 text-xl font-semibold secondaryspace-nowrap"
+          >
+            chat
+          </h1>
+          <div
+            id="chat"
+            class="border-t border-l border-r border-secondary rounded-t-lg"
+          >
+            <ul
+              id="messages"
+              class="h-64 md:h-inherit overflow-y-auto p-3 text-primary"
+            ></ul>
+          </div>
+          <section
+            id="login"
+            class="border-b border-l border-r border-secondary rounded-b-lg p-3"
+          >
+          
+            <form id="join-form" class="flex gap-3">
+              <input
+                type="text"
+                id="username"
+                placeholder="nickname"
+                class="text-secondary bg-transparent border text-sm rounded-lg focus:ring-event focus:border-event block w-3/4 p-2.5"
+              />
+              <button
+                type="submit"
+                class="text-secondary bg-transparent border text-sm rounded-lg focus:ring-event focus:border-event block w-1/4 p-2.50"
+              >
+                Join
+              </button>
+            </form>
+            
+            <form id="msg-form" class="flex gap-3">              
+              <input
+                id="message"
+                type="text"
+                spellcheck="false"
+                placeholder="type here"
+                class="text-secondary bg-transparent border text-sm rounded-lg focus:ring-event focus:border-event block w-3/4 p-2.5"
+              />
+              <button
+                id="msg-button"
+                type="submit"
+                class="text-secondary bg-transparent border text-sm rounded-lg focus:ring-event focus:border-event block w-1/4 p-2.5"
+                x-model="inputText"
+                
+              >
+                ✅
+              </button>
+              <div id="emoji-picker"
+              x-data="{
+                  open: false,
+                  search: '',
+                  input: '🙂',
+                  inputText: '',
+                  emojis: {
+                    'smiley, face, happy, joy, emotion, smiley': '🙂',
+                    'open hands, smiley, hug, love, care': '🤗',
+                    'laughing, lol, smile, smiley': '😂',
+                    'sunglasses, cool, smile, smiley': '😎',
+                    'clown, face, funny, lol, party, hat': '🥳',
+                    'face, happy, joy, heart, love, emotion, smiley': '🥰',
+                    'megaphone, announcement, broadcast, public, speaking': '📣',
+                    'dice, game, chance, roll, random, target, center': '🎯',
+                    'gift, present, package, box, celebrate, birthday, party': '🎁',
+                    'balloon, celebration,party, birthday,': '🎈',
+                    'hourglass, time, timer, watch, stopwatch': '⏳',
+                    'clap, applause, bravo, hand, gesture, wave, hand clapping': '👏',    
+                    'alarm, clock, morning, ring, wake up': '⏰',
+                    'clock, time, timer, watch, stopwatch': '⏱',
+                    'truck, transportation, delivery, road, vehicule': '🚚',
+                    'truck, transportation, delivery, road, vehicule': '🚛',
+                    'key, lock, password, secure': '🔑',
+                    'trophy, award, cup, competition, game, sport, winner': '🏆',
+                    'win, medal, gold, silver, bronze, rank, trophy, sport, competition, game, award': '🏅',
+                    'flex, muscle, body, workout, exercise': '💪',
+                    'congratulations, party, popper, confetti, celebration': '🎉',
+                    'ticket, prize, gift, award, prize, gift, admission': '🎟',
+                    'star, gold, yellow, sky, space, night, evening, dusk': '⭐️',
+                    'star, astronomy, sparkle, sparkles, magic': '✨',
+                    'heart, like, favorite, love': '❤️',
+                    'handshake, agreement, hands': '🤝‍',
+                    'eye, vision, look, see': '👀',
+                      'tractor, farm, machine, agriculture': '🚜',
+                      'leaf, plant, nature, green, agricultre, ecology': '🌿',
+                      'corn, field, agricuultre, vegetable, plant, nature, green, ecology': '🌽',
+                      'fish, sea, ocan, swimming, water': '🐟',
+                      'home, house, building, apartment, residence': '🏠',
+                      'university, official, building, columns, institution': '🏦',
+                      'school, education, student, learn, diploma': '🏫',
+                      'education, school, student, learn, diploma': '🎓',
+                      'child, children, young': '🧒',
+                      'book, paper, knowledge, reading, library, books, literature': '📖',
+                      'scroll, paper, document, page, book': '📜',
+                      'contract, bookmark, tab, sheet, signature': '📑',
+                      'pencil, write, edit, paper, memo, note': '✏️',
+                      'pen, write, paper, memo, note, fountain pen': '✒️',
+                      'military, army, soldier, war, helmet': '🪖',
+                      'tool, measure, scale, ruler, law, regulation, enforcement': '⚖️',
+                      'police, cop, urgence, security, law, enforcement, arrest, criminal, law enforcement': '🚓',
+                      'shield, protection, security, safety, defense': '🛡️',
+                      'urgence, police, fire, light, warning, danger': '🚨',
+                      'bomb, explode, explosion, bang, blast, grenade': '💣',
+                      'fire, flame, hot, heat, blaze, brigade': '🔥',
+                      'thermometer, hot, temperature, warm, ill, illness, fever': '🌡️',
+                      'money, bag, dollar, coin': '💰',
+                      'money, purse, wallet, bag, dollar, euro': '👛',
+                      'credit, bank, money, loan, bill, payment, credit card': '💶',
+                      'chart, graph, analytics, statistics, data, report': '📊',
+                      'money, dollar, currency, payment, bank, banknote, exchange, cash': '💱',
+                      'money, dollar, currency, payment, bank, banknote, exchange, cash': '💵',
+                      'money, dollar, currency, payment, bank, banknote, exchange, cash, fly': '💸',
+                      'shopping, buy, purchase, cart, buy': '🛒',
+                      'shopping, buy, purchase, shopping cart': '🛍️',
+                      'travel, luggage, bag, suitcase, bag': '🧳',
+                      'film, movie, motion, cinema, theater, culture': '🎬',
+                      'computer, laptop, digital, keyboard, monitor, screen': '💻',
+                      'lightning, bolt, electricity, science': '⚡',
+                      'light, bulb, electric, electricity': '💡',
+                      'flashlight, light, lamp': '🔦',
+                      'rocket, launch, space, ship, plane, space, start up': '🚀',
+                      'hospital, medical, center, care, health, sickness, disease, illness': '🏥',
+                      'clothing, lab, coat, science, laboratory': '🥼',
+                      'factory, building, manufacturing, production, construction, polution': '🏭',
+                      'globe, world, earth, planet, map, travel, space': '🌍',
+                      'location, map, pin, marker, navigation, aid': '📍',
+                      'europe, european union, flag, country, nation, place, location, geography, globe': '🇪🇺',
+                      'custom, border, control, security, safety, protection': '🛂',
+                      'bus, car, transportation, transportation vehicle, trolly': '🚎',
+
+                  },
+                  toggle() {
+                      if (this.open) {
+                          return this.close()
+                      }
+      
+                      this.$refs.button.focus()
+      
+                      this.open = true
+                  },
+                  close(focusAfter) {
+                      if (! this.open) return
+      
+                      this.open = false
+      
+                      focusAfter && focusAfter.focus()
+                  },
+                  get filteredEmojis() {
+                      return Object.keys(this.emojis)
+                      .filter(key => key.includes(this.search))
+                      .reduce((obj, key) => {
+                        obj[key] = this.emojis[key];
+                        return obj;
+                      }, {})
+                  }
+              }"
+              x-on:keydown.escape.prevent.stop="close($refs.button)"
+              x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+              x-id="['dropdown-button']"
+              class="relative"
+          >
+          <button x-ref="button"     
+          x-on:click="toggle()"
+          :aria-expanded="open"
+          :aria-controls="$id('dropdown-button')"
+          type="button" class="text-secondary bg-transparent border text-sm rounded-lg focus:ring-event focus:border-event block p-2.5"><span x-text="input"></span>
+        </button>
+          <input type="hidden" id="emoji" x-model="input">
+           <!-- Panel -->
+           <div
+           x-ref="panel"
+           x-show="open"
+           onclick="if (emojiPicker) {document.getElementById('message').value += document.getElementById('emoji').value;}"
+           x-transition.origin-top
+           x-on:click.outside="close($refs.button)"
+           :id="$id('dropdown-button')"
+           style="display: none; width: 24.85rem; top: -14rem; left: auto; right: 0;"
+           class="absolute left-0 mt-2 p-4 max-h-64 bg-secondary shadow-md overflow-scroll rounded"
+       >
+           <input type="search" onclick="emojiPicker = false" x-model="search" class="h-10 w-full px-2 mb-2 text-sm border border-1 border-slate-200 bg-gray-50 rounded-md placeholder:text-gray-500" placeholder="Search an emoji...">
+           <template x-for="(emoji, keywords) in filteredEmojis" :key="emoji">
+               <button type="button" class="inline-block py-2 px-3 m-1 cursor-pointer rounded-md bg-gray-100 hover:bg-event-100" :title="keywords" onclick="emojiPicker = true; document.getElementById('message').focus();" x-on:click="input = emoji; toggle();">
+                   <span class="inline-block w-5 h-5" x-text="emoji"></span>
+               </button>
+           </template>
+       </div>
+            </form>
+           
+          </section>
+        </div>
+      </section>
+    </div>
+
     </header>
 
     <main class="grid grid-cols-1 w-full mx-auto">
-      <h3 class="text-secondary text-center pt-20 text-2xl">Movies</h3>
-      <section class="w-full h-15 px-35">
-        <div class="grid grid-cols-4 gap-4">
-          <div class="col-span-4 text-secondary text-center pt-20 text-2xl">
+      <section class="w-full h-96 px-35 bg-secondary">
+        <div class="grid grid-cols-4 gap-4 max-w-5xl mx-auto">
+          <div class="col-span-4 text-primary text-center pt-20 text-2xl">
             <h2>Next movie starts in:</h2>
           </div>
           <div>
-            <h2 id="day" class="text-secondary text-center pt-20 text-2xl"></h2>
+            <h2 id="day" class="text-primary text-center pt-20 text-2xl"></h2>
           </div>
           <div>
-            <h2
-              id="hour"
-              class="text-secondary text-center pt-20 text-2xl"
-            ></h2>
+            <h2 id="hour" class="text-primary text-center pt-20 text-2xl"></h2>
           </div>
           <div>
             <h2
               id="minute"
-              class="text-secondary text-center pt-20 text-2xl"
+              class="text-primary text-center pt-20 text-2xl"
             ></h2>
           </div>
           <div>
             <h2
               id="second"
-              class="text-secondary text-center pt-20 text-2xl"
+              class="text-primary text-center pt-20 text-2xl"
             ></h2>
           </div>
           <div>
-            <h2 class="text-secondary text-center pt-20 text-2xl">Day</h2>
+            <h2 class="text-primary text-center pt-20 text-2xl">Day</h2>
           </div>
           <div>
-            <h2 class="text-secondary text-center pt-20 text-2xl">Hour</h2>
+            <h2 class="text-primary text-center pt-20 text-2xl">Hour</h2>
           </div>
           <div>
-            <h2 class="text-secondary text-center pt-20 text-2xl">Minute</h2>
+            <h2 class="text-primary text-center pt-20 text-2xl">Minutes</h2>
           </div>
           <div>
-            <h2 class="text-secondary text-center pt-20 text-2xl">Second</h2>
+            <h2 class="text-primary text-center pt-20 text-2xl">Seconds</h2>
           </div>
         </div>
       </section>
+
+      <h3 class="text-secondary text-center pt-20 text-2xl">Movies</h3>
+
       <section class="py-28 w-full flex justify-center items-center">
         <div
           class="grid grid-cols-1 gap-4 self-center w-full md:max-w-5xl md:grid-cols-2"
