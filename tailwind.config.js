@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./public/**/*.{html,js}", "./node_modules/flowbite//*.js"],
+  content: ["./public//.{html,js}", "./node_modules/flowbite//.js"],
   theme: {
     extend: {
       fontSize: {
@@ -20,11 +20,13 @@ module.exports = {
         "2xl": "1536px",
       },
       colors: {
-        tangerine: "#e67d1c",
-        gunmetal: "#292F36",
-        blue: "#99C7FF",
-        white: "#FFFFFF",
-        secondary: "#69788C",
+        action: "#EF5D60",
+        primary: "#292F36",
+        event: "#59C3C3",
+        secondary: "#DAD2D8",
+      },
+      backgroundImage: {
+        testi: "url('/public/images/porsche992gt3.jpg')",
       },
     },
   },
