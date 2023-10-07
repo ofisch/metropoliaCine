@@ -10,6 +10,7 @@
       href="https://unpkg.com/video.js@7/dist/video-js.min.css"
       rel="stylesheet"
     />
+    <link href="scrollbar.css" rel="stylesheet" />
     <script src="https://vjs.zencdn.net/8.5.2/video.min.js" defer></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="../node_modules/videojs-youtube/dist/Youtube.min.js"></script>
@@ -99,7 +100,7 @@
         Live seminar
       </h1>
     </header>
-    <div class="flex flex-col md:flex-row align-middle w-full gap-2">
+    <div class="flex flex-col md:flex-row align-middle w-full h-full gap-4">
       <div class="md:pl-3 px-4 w-full">
         <h1
           class="hidden md:block text-secondary py-4 text-xl font-semibold secondaryspace-nowrap"
@@ -128,9 +129,9 @@
       </div>
 
       <section
-        class="md:w-2/3 md:justify-start md:items-start flex px-4 justify-center items-center"
+        class="md:w-full md:justify-start md:items-start flex px-4 justify-center items-center"
       >
-        <div class="w-full md:w-2/3">
+        <div class="w-full md:full">
           <h1
             class="hidden md:block text-secondary py-4 text-xl font-semibold secondaryspace-nowrap"
           >
@@ -138,7 +139,7 @@
           </h1>
           <div
             id="chat"
-            class="border-t border-l border-r border-secondary rounded-t-lg"
+            class="bg-white border-t border-l border-r  rounded-t-lg"
           >
             <ul
               id="messages"
@@ -147,40 +148,42 @@
           </div>
           <section
             id="login"
-            class="border-b border-l border-r border-secondary rounded-b-lg p-3"
+            class="bg-primarylight rounded-b-lg p-4"
           >
           
             <form id="join-form" class="flex gap-3">
+              <link href="/dist/output.css" rel="stylesheet" />
               <input
                 type="text"
                 id="username"
                 placeholder="nickname"
-                class="text-secondary bg-transparent border text-sm rounded-lg focus:ring-event focus:border-event block w-3/4 p-2.5"
+                class="text-primarydark bg-white text-sm rounded-lg focus:ring-event focus:border-event block w-3/4 p-2.5"
               />
               <button
                 type="submit"
-                class="text-secondary bg-transparent border text-sm rounded-lg focus:ring-event focus:border-event block w-1/4 p-2.50"
+                class="text-primarydark bg-action text-sm rounded-lg focus:ring-event focus:border-event block w-1/4 p-2.50"
               >
                 Join
               </button>
             </form>
             
-            <form id="msg-form" class="flex gap-3">              
+            <form id="msg-form" class="flex gap-3">  
+              <link href="/dist/output.css" rel="stylesheet" />            
               <input
                 id="message"
                 type="text"
                 spellcheck="false"
                 placeholder="type here"
-                class="text-secondary bg-transparent border text-sm rounded-lg focus:ring-event focus:border-event block w-3/4 p-2.5"
+                class="text-primarydark bg-white text-sm rounded-lg focus:ring-event focus:border-event block w-3/4 p-2.5"
               />
               <button
                 id="msg-button"
                 type="submit"
-                class="text-secondary bg-transparent border text-sm rounded-lg focus:ring-event focus:border-event block w-1/4 p-2.5"
+                class="text-primarydark bg-action text-sm rounded-lg focus:ring-event focus:border-event block w-1/4 p-2.5"
                 x-model="inputText"
                 
               >
-                ✅
+                chat
               </button>
               <div id="emoji-picker"
               x-data="{
@@ -298,7 +301,7 @@
           x-on:click="toggle()"
           :aria-expanded="open"
           :aria-controls="$id('dropdown-button')"
-          type="button" class="text-secondary bg-transparent border text-sm rounded-lg focus:ring-event focus:border-event block p-2.5"><span x-text="input"></span>
+          type="button" class="max-h-1 max-w-1 text-secondary bg-transparent text-4xl rounded-lg focus:ring-event focus:border-event block"><span x-text="input"></span>
         </button>
           <input type="hidden" id="emoji" x-model="input">
            <!-- Panel -->
@@ -315,7 +318,7 @@
            <input type="search" onclick="emojiPicker = false" x-model="search" class="h-10 w-full px-2 mb-2 text-sm border border-1 border-slate-200 bg-gray-50 rounded-md placeholder:text-gray-500" placeholder="Search an emoji...">
            <template x-for="(emoji, keywords) in filteredEmojis" :key="emoji">
                <button type="button" class="inline-block py-2 px-3 m-1 cursor-pointer rounded-md bg-gray-100 hover:bg-event-100" :title="keywords" onclick="emojiPicker = true; document.getElementById('message').focus();" x-on:click="input = emoji; toggle();">
-                   <span class="inline-block w-5 h-5" x-text="emoji"></span>
+                   <span class="inline-block w-10 h-10" x-text="emoji"></span>
                </button>
            </template>
        </div>
