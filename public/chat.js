@@ -1,6 +1,8 @@
 "use strict";
 
-const socket = io("http://localhost:3000");
+const socket = io(
+  "https://mdds-server-onnif.northeurope.cloudapp.azure.com:3000"
+);
 
 const currentRoom = "movie1";
 
@@ -25,8 +27,6 @@ msgForm.addEventListener("submit", (event) => {
     messageInput.value = "";
   }
 });
-
-//   onclick="document.getElementById('message').value += document.getElementById('emoji').value;"
 
 joinForm.addEventListener("submit", (event) => {
   event.preventDefault();

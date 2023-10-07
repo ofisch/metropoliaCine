@@ -5,7 +5,7 @@ const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 
-app.use(express.static(__dirname));
+app.use(express.static("public"));
 
 const users = [];
 const rooms = ["movie1", "movie2", "movie3"];
