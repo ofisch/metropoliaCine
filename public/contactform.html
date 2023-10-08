@@ -83,13 +83,14 @@
     </nav>
 
     <div class="flex h-screen justify-center items-center">
-        <form action="https://formsubmit.co/eetu.pasonen@hotmail.com" method="POST" class="rounded w-72 grid grid-cols-1 grid-rows-8 gap-8">
+        <form action="https://formsubmit.co/eetu.pasonen@hotmail.com" method="POST" class="rounded w-72 grid grid-cols-1 grid-rows-9 gap-8">
+            <h1>Contact form</h1>
             <link href="styles.css" rel="stylesheet" />
             <link href="/dist/output.css" rel="stylesheet" />
-            <input type="email" name="email" placeholder="Email address" class="rounded w-full " required>
-            <input type="text" name="name" placeholder="name" class="rounded w-full ">
-            <textarea type="text" name="text" placeholder="input" class="rounded w-full row-span-5" required></textarea>
-            <button type="submit" class="bg-action p-3 w-32 mx-auto hover:bg-actionhover rounded">Send</button>
+            <input type="email" name="email" placeholder="Email address" class="rounded w-full focus:text-primarydark" required>
+            <input type="text" name="name" placeholder="name" class="rounded w-full focus:text-primarydark">
+            <textarea type="text" name="text" placeholder="input" class="rounded w-full row-span-5 focus:text-primarydark" required></textarea>
+            <button type="submit" class="bg-action p-3 w-32 mx-auto hover:bg-actionhover rounded focus:text-primarydark">Send</button>
         </form>
     </div>
     <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
