@@ -1,8 +1,6 @@
 "use strict";
 
-const socket = io(
-  "https://mdds-server-onnif.northeurope.cloudapp.azure.com:3000"
-);
+const socket = io.connect('https://mdds-server-eetupas.northeurope.cloudapp.azure.com');
 
 const currentRoom = "movie1";
 
