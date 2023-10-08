@@ -1,9 +1,24 @@
 "use strict";
 
 const express = require("express");
+const https = require("https");
+const fs = require("fs");
 const app = express();
-const http = require("http").createServer(app);
-const io = require("socket.io")(http);
+const io = require("socket.io")(https);
+
+// Read SSL/TLS certificate and key files
+const privateKey = fs.readFileSync(
+  "/etc/letsencrypt/live/mdds-server-onnif.northeurope.cloudapp.azure.com$/privkey.pem",
+  "utf8"
+);
+const certificate = fs.readFileSync(
+  "/etc/letsencrypt/live/mdds-server-onnif.northeurope.cloudapp.azure.com$/fullchain.pem",
+  "utf8"
+);
+
+const credentials = { key: privateKey, cert: certificate };
+
+const httpsServer = https.createServer(credentials, app);
 
 app.use(express.static("public"));
 
@@ -137,6 +152,6 @@ io.on("connection", (socket) => {
   });
 });
 
-http.listen(3000, () => {
-  console.log("listening on port 3000");
+httpsServer.listen(443, () => {
+  console.log("Server is running on HTTPS port 443");
 });
