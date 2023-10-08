@@ -61,7 +61,7 @@
             <li>
               <a
                 href="index.html"
-                class="block py-2 pl-3 pr-4 text-primary bg-action rounded-lg md:bg-transparent md:text-action md:p-0"
+                class="block py-2 pl-3 pr-4 text-primary bg-action duration-300 rounded-lg ease-in-out hover:color-actionhover md:bg-transparent md:text-action md:p-0"
                 aria-current="page"
                 >Home</a
               >
@@ -69,21 +69,21 @@
             <li>
               <a
                 href="#"
-                class="block py-2 pl-3 pr-4 text-primary rounded-lg hover:bg-gray-100 md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0"
+                class="block py-2 pl-3 pr-4 text-primary duration-300 rounded-lg ease-in-out hover:bg-actionhover md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0"
                 >Movies</a
               >
             </li>
             <li>
               <a
                 href="timetable.html"
-                class="block py-2 pl-3 pr-4 text-primary rounded-lg hover:bg-gray-100 md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0"
+                class="block py-2 pl-3 pr-4 text-primary duration-300 rounded-lg ease-in-out hover:bg-actionhover md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0"
                 >Timetable</a
               >
             </li>
             <li>
               <a
                 href="#"
-                class="block py-2 pl-3 pr-4 text-primary rounded-lg hover:bg-gray-100 md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0"
+                class="block py-2 pl-3 pr-4 text-primary rounded-lg duration-300  ease-in-out hover:bg-actionhover md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0"
                 >Contact</a
               >
             </li>
@@ -150,7 +150,6 @@
             id="login"
             class="bg-primarylight rounded-b-lg p-4"
           >
-          
             <form id="join-form" class="flex gap-3">
               <link href="/dist/output.css" rel="stylesheet" />
               <input
@@ -161,7 +160,7 @@
               />
               <button
                 type="submit"
-                class="text-primarydark bg-action text-sm rounded-lg focus:ring-event focus:border-event block w-1/4 p-2.50"
+                class="text-primarydark bg-action text-sm rounded-lg focus:ring-event duration-300  ease-in-out hover:bg-actionhover focus:border-event block w-1/4 p-2.50"
               >
                 Join
               </button>
@@ -179,7 +178,7 @@
               <button
                 id="msg-button"
                 type="submit"
-                class="text-primarydark bg-action text-sm rounded-lg focus:ring-event focus:border-event block w-1/4 p-2.5"
+                class="text-primarydark bg-action text-sm rounded-lg duration-300  ease-in-out hover:bg-actionhover focus:ring-event focus:border-event block w-1/4 p-2.5"
                 x-model="inputText"
                 
               >
@@ -312,7 +311,7 @@
            x-transition.origin-top
            x-on:click.outside="close($refs.button)"
            :id="$id('dropdown-button')"
-           style="display: none; width: 24.85rem; top: -14rem; left: auto; right: 0;"
+           style="display: none; width: 24.85rem; top: -18rem; left: auto; right: 0;"
            class="absolute left-0 mt-2 p-4 max-h-64 bg-secondary shadow-md overflow-scroll rounded"
        >
            <input type="search" onclick="emojiPicker = false" x-model="search" class="h-10 w-full px-2 mb-2 text-sm border border-1 border-slate-200 bg-gray-50 rounded-md placeholder:text-gray-500" placeholder="Search an emoji...">
@@ -498,7 +497,7 @@
 
       <button class="hover:text-action bg-secondary w-fit justify-self-center mb-10 px-4 py-2 rounded">
         <a href="playback.html">
-          Previus streams
+          Previous streams
         </a>
       </button>
     </main>
