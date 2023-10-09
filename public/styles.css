@@ -1514,7 +1514,7 @@ input:checked + .toggle-bg {
 }
 
 .bg-testi {
-  background-image: url("/public/images/porsche992gt3.jpg");
+  background-image: url("/images/porsche992gt3.jpg");
 }
 
 .bg-cover {
@@ -1583,11 +1583,6 @@ input:checked + .toggle-bg {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-}
-
-.py-20 {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
 }
 
 .pb-10 {

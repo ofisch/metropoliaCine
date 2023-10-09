@@ -29,7 +29,7 @@ module.exports = {
         secondary: "#DAD2D8",
       },
       backgroundImage: {
-        testi: "url('/public/images/porsche992gt3.jpg')",
+        testi: "url('/images/porsche992gt3.jpg')",
       },
     },
   },
