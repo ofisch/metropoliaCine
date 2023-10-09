@@ -8,7 +8,7 @@ const io = require("socket.io")(http);
 app.use(express.static(__dirname));
 
 const users = [];
-const rooms = ["movie1", "movie2", "movie3"];
+const rooms = ["live", "democompo", "mikko", "morning", "museo", "opiskelija"];
 const history = [];
 const client = [];
 

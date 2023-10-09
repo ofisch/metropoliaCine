@@ -21,7 +21,10 @@ module.exports = {
       },
       colors: {
         action: "#EF5D60",
+        actionhover: "#EB3336",
         primary: "#292F36",
+        primarydark: "#23282F",
+        primarylight: "#343C46",
         event: "#59C3C3",
         secondary: "#DAD2D8",
       },

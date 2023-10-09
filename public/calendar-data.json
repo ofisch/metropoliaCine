@@ -13,28 +13,50 @@
       "event": "more testing"
     }
   ],
+  "8": [
+    {
+      "year": 2023,
+      "month": 11,
+      "time": "19.20",
+      "event": "Museo olohuoneena"
+    }
+  ],
   "11": [
     {
       "year": 2023,
       "month": 10,
-      "time": "9.00 - 16.00",
+      "time": "12.00 - 16.00",
       "event": "Live opening"
     }
   ],
-  "15": [
+  "12": [
     {
       "year": 2023,
-      "month": 11,
-      "time": "13.15",
-      "event": "Movie 1"
+      "month": 10,
+      "time": "20.00",
+      "event": "Democompo"
+    }
+  ],
+  "16": [
+    {
+      "year": 2023,
+      "month": 10,
+      "time": "18.00",
+      "event": "Mikko EVTEK to Alaska"
     }
   ],
   "20": [
     {
-      "year": 2024,
-      "month": 1,
-      "time": "14.15",
-      "event": "Movie 2"
+      "year": 2023,
+      "month": 10,
+      "time": "12.00",
+      "event": "Morning after"
+    },
+    {
+      "year": 2023,
+      "month": 11,
+      "time": "14.45",
+      "event": "Opiskelijaelämää 2009"
     }
   ]
 }

@@ -10,26 +10,28 @@
       href="https://unpkg.com/video.js@7/dist/video-js.min.css"
       rel="stylesheet"
     />
-    <link href="scrollbar.css" rel="stylesheet" />
     <script src="https://vjs.zencdn.net/8.5.2/video.min.js" defer></script>
     <script src="//unpkg.com/alpinejs" defer></script>
-    <script src="../node_modules/videojs-youtube/dist/Youtube.min.js"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
       rel="stylesheet"
     />
     <script src="/socket.io/socket.io.js"></script>
     <script src="chat.js" defer></script>
-    <title>Metropolia Cine</title>
+    <script src="../videolock.js"></script>
+    <script>
+      let emojiPicker = false;
+    </script>
+    <title>Metropolia Cine - Museo olohuoneena</title>
   </head>
-  <body class="grid gap-3 py-2 bg-primary">
-    <nav class="text-secondary lg:justify-center relative">
+  <body class="grid gap-3 py-2 bg-primary justify-center">
+    <nav class="text-secondary relative border-b">
       <div
         class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
       >
         <a href="index.html" class="flex items-center">
-          <span class="self-center text-2xl font-semibold whitespace-nowrap">
-            Metropolia Cine
+          <span class="self-center text-2xl font-semibold secondaryspace-nowrap">
+            Metropolia Cine - Museo olohuoneena
           </span>
         </a>
         <button
@@ -92,43 +94,45 @@
       </div>
     </nav>
 
-    <header
-      class="max-w-screen-xl w-full flex flex-col md:flex-row md:justify-start text-secondary py-20 gap-3 justify-self-center"
+    <main
+      class="max-w-screen-xl  flex flex-col md:flex-row border md:justify-start justify-center text-secondary py-2 gap-3"
     >
-    <header class="md:hidden">
-      <h1 class="text-secondary p-4 text-xl font-semibold secondaryspace-nowrap">
-        Live seminar
-      </h1>
-    </header>
-    <div class="flex flex-col md:flex-row align-middle w-full h-full gap-4">
-      <div class="md:pl-3 px-4 w-full">
-        <h1
-          class="hidden md:block text-secondary py-4 text-xl font-semibold secondaryspace-nowrap"
-        >
-        Live seminar
+      <header class="md:hidden">
+        <h1 class="text-secondary p-4 text-xl font-semibold secondaryspace-nowrap">
+          Museo olohuoneena
         </h1>
-        <video
-          id="my-video"
-          controls
-          preload="auto"
-          poster="./images/porsche992gt3.jpg"
-          data-setup="{}"
-          class="video-js vjs-fluid vjs-big-play-centered aspect-video md:w-2/3"
-        >
-          <source src="https://a261dbad79df.entrypoint.cloud.wowza.com/app-mG265q12/ngrp:7e249711_all/playlist.m3u8" type="application/x-mpegURL" />
-          <source src="" type="application/x-mpegURL" />
+      </header>
+      <div class="flex flex-col md:flex-row align-middle w-full gap-2">
+        <div class="md:pl-3 px-4 w-full">
+          <h1
+            class="hidden md:block text-secondary py-4 text-xl font-semibold secondaryspace-nowrap"
+          >
+          Museo olohuoneena
+          </h1>
+          <video
+            id="my-video"
+            controls
+            preload="auto"
+            poster="./images/porsche992gt3.jpg"
+            data-setup="{}"
+            class="video-js vjs-fluid vjs-big-play-centered aspect-video md:w-2/3"
+          >
+            <source
+              src="https://75ef2e1cdb7f.entrypoint.cloud.wowza.com/app-021t9h44/ngrp:e93671c3_all/playlist.m3u8"
+              type="application/x-mpegURL"
+            />
+            <source src="./video/Museo_olohuoneena.mp4" type="video/mp4" />
+            <p class="vjs-no-js">
+              To view this video please enable JavaScript, and consider
+              upgrading to a web browser that
+              <a href="https://videojs.com/html5-video-support/" target="_blank"
+                >supports HTML5 video</a
+              >
+            </p>
+          </video>
+        </div>
 
-          <p class="vjs-no-js">
-            To view this video please enable JavaScript, and consider
-            upgrading to a web browser that
-            <a href="https://videojs.com/html5-video-support/" target="_blank"
-              >supports HTML5 video</a
-            >
-          </p>
-        </video>
-      </div>
-
-      <section
+        <section
         class="md:w-full md:justify-start md:items-start flex px-4 justify-center items-center"
       >
         <div class="w-full md:full">
@@ -151,7 +155,7 @@
             class="bg-primarylight rounded-b-lg p-4"
           >
           
-            <form id="join-form" data-room="live" class="flex gap-3">
+            <form id="join-form" data-room="museo" class="flex gap-3">
               <link href="/dist/output.css" rel="stylesheet" />
               <input
                 type="text"
@@ -160,6 +164,7 @@
                 class="text-primarydark bg-white text-sm rounded-lg focus:ring-event focus:border-event block w-3/4 p-2.5"
               />
               <button
+              id="join-button"
                 type="submit"
                 class="text-primarydark bg-action text-sm rounded-lg focus:ring-event focus:border-event block w-1/4 p-2.50"
               >
@@ -327,206 +332,29 @@
           </section>
         </div>
       </section>
-    </div>
-
-    </header>
-
-    <main class="grid grid-cols-1 w-full mx-auto">
-      <section class="w-full h-96 px-35 bg-secondary">
-        <div class="grid grid-cols-4 gap-4 max-w-5xl mx-auto">
-          <div class="col-span-4 text-primary text-center pt-20 text-2xl">
-            <h2>Next movie starts in:</h2>
-          </div>
-          <div>
-            <h2 id="day" class="text-primary text-center pt-20 text-2xl"></h2>
-          </div>
-          <div>
-            <h2 id="hour" class="text-primary text-center pt-20 text-2xl"></h2>
-          </div>
-          <div>
-            <h2
-              id="minute"
-              class="text-primary text-center pt-20 text-2xl"
-            ></h2>
-          </div>
-          <div>
-            <h2
-              id="second"
-              class="text-primary text-center pt-20 text-2xl"
-            ></h2>
-          </div>
-          <div>
-            <h2 class="text-primary text-center pt-20 text-2xl">Day</h2>
-          </div>
-          <div>
-            <h2 class="text-primary text-center pt-20 text-2xl">Hour</h2>
-          </div>
-          <div>
-            <h2 class="text-primary text-center pt-20 text-2xl">Minutes</h2>
-          </div>
-          <div>
-            <h2 class="text-primary text-center pt-20 text-2xl">Seconds</h2>
-          </div>
-        </div>
-      </section>
-
-      <h3 class="text-secondary text-center pt-20 text-2xl">Movies</h3>
-
-      <section class="py-28 w-full flex justify-center items-center">
-        <a href="democompo.html">
-        <div
-          class="grid grid-cols-1 gap-4 self-center w-full md:max-w-5xl md:grid-cols-2"
-        >
-          <div
-            class="order-1 w-full h-64 bg-testi bg-no-repeat bg-cover bg-center rounded-lg max-w-md mx-auto"
-          >
-            <div
-              class="bg-black w-full h-full rounded-lg bg-opacity-30 hover:bg-opacity-10 transition ease-in-out delay-100 duration-300"
-            ></div>
-          </div>
-          <div
-            class="order-2 text-secondary px-2 grid grid-rows-3 text-center max-w-md justify-self-center"
-          >
-            <h4 class="py-2 text-xl self-center">Democompo</h4>
-            <p class="py-2 row-span-2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eius
-              minima ullam, alias dignissimos id facere? Aliquam deserunt
-              cupiditate quaerat.
-
-              Ensi-ilta: 12.10
-            </p>
-          </div>
-        </div>
-      </a>
-      </section>
-
-      <section
-        class="py-28 w-full flex justify-center items-center bg-secondary"
-      >
-      <a href="mikko.html">
-        <div
-          class="grid grid-cols-1 gap-4 self-center w-full md:max-w-5xl md:grid-cols-2"
-        >
-          <div
-            class="order-1 md:order-2 w-full h-64 bg-testi bg-no-repeat bg-cover bg-center rounded-lg max-w-md mx-auto"
-          >
-            <div
-              class="bg-black w-full h-full rounded-lg bg-opacity-30 hover:bg-opacity-10 transition ease-in-out delay-100 duration-300"
-            ></div>
-          </div>
-          <div
-            class="order-2 md:order-1 text-primary px-2 grid grid-rows-3 text-center max-w-md justify-self-center"
-          >
-            <h4 class="py-2 text-xl self-center">Mikko EVTEK to Alaska</h4>
-            <p class="py-2 row-span-2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eius
-              minima ullam, alias dignissimos id facere? Aliquam deserunt
-              cupiditate quaerat.
-
-              Ensi-ilta: 16.10
-            </p>
-          </div>
-        </div>
-      </a>
-      </section>
-
-      <section class="py-28 w-full flex justify-center items-center">
-        <a href="morning.html">
-        <div
-          class="grid grid-cols-1 gap-4 self-center w-full md:max-w-5xl md:grid-cols-2"
-        >
-          <div
-            class="order-1 w-full h-64 bg-testi bg-no-repeat bg-cover bg-center rounded-lg max-w-md mx-auto"
-          >
-            <div
-              class="bg-black w-full h-full rounded-lg bg-opacity-30 hover:bg-opacity-10 transition ease-in-out delay-100 duration-300"
-            ></div>
-          </div>
-          <div
-            class="order-2 text-secondary px-2 grid grid-rows-3 text-center max-w-md justify-self-center"
-          >
-            <h4 class="py-2 text-xl self-center">Morning after</h4>
-            <p class="py-2 row-span-2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eius
-              minima ullam, alias dignissimos id facere? Aliquam deserunt
-              cupiditate quaerat.
-
-              Ensi-ilta: 20.10
-            </p>
-          </div>
-        </div>
-      </a>
-      </section>
-
-      <section
-        class="py-28 w-full flex justify-center items-center bg-secondary"
-      >
-      <a href="museo.html">
-        <div
-          class="grid grid-cols-1 gap-4 self-center w-full md:max-w-5xl md:grid-cols-2"
-        >
-          <div
-            class="order-1 md:order-2 w-full h-64 bg-testi bg-no-repeat bg-cover bg-center rounded-lg max-w-md mx-auto"
-          >
-            <div
-              class="bg-black w-full h-full rounded-lg bg-opacity-30 hover:bg-opacity-10 transition ease-in-out delay-100 duration-300"
-            ></div>
-          </div>
-          <div
-            class="order-2 md:order-1 text-primary px-2 grid grid-rows-3 text-center max-w-md justify-self-center"
-          >
-            <h4 class="py-2 text-xl self-center">Museo olohuoneena</h4>
-            <p class="py-2 row-span-2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eius
-              minima ullam, alias dignissimos id facere? Aliquam deserunt
-              cupiditate quaerat.
-
-              Ensi-ilta: 8.11
-            </p>
-          </div>
-        </div>
-      </a>
-      </section>
-
-      <section class="py-28 w-full flex justify-center items-center">
-        <a href="opiskelija.html">
-        <div
-          class="grid grid-cols-1 gap-4 self-center w-full md:max-w-5xl md:grid-cols-2"
-        >
-          <div
-            class="order-1 w-full h-64 bg-testi bg-no-repeat bg-cover bg-center rounded-lg max-w-md mx-auto"
-          >
-            <div
-              class="bg-black w-full h-full rounded-lg bg-opacity-30 hover:bg-opacity-10 transition ease-in-out delay-100 duration-300"
-            ></div>
-          </div>
-          <div
-            class="order-2 text-secondary px-2 grid grid-rows-3 text-center max-w-md justify-self-center"
-          >
-            <h4 class="py-2 text-xl self-center">Opiskelijaelämää 2009</h4>
-            <p class="py-2 row-span-2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eius
-              minima ullam, alias dignissimos id facere? Aliquam deserunt
-              cupiditate quaerat.
-
-              Ensi-ilta: 20.11
-            </p>
-          </div>
-        </div>
-      </a>
-      </section>
-
-      <button class="hover:text-action bg-secondary w-fit justify-self-center mb-10 px-4 py-2 rounded">
-        <a href="playback.html">
-          Previus streams
-        </a>
-      </button>
+      </div>
     </main>
-    <footer class="h-24 flex items-center justify-center border">
-      <p>footer</p>
+
+    <footer class="flex items-center justify-center border">
+      <div class="flex p-4">
+        <section class="w-1/2 text-secondary">
+          <h3 class="text-xl py-1">Synopsis</h3>
+          <p>
+            Aina ei Scrum-kokous mene putkeen. Miten päähahmot selviävät tästä
+            tragediasta?
+          </p>
+        </section>
+        <section class="w-1/2 text-secondary">
+          <h3 class="text-xl py-1">Tiedot</h3>
+          <ul>
+            <li>Ensi-ilta: 3.10.2023</li>
+            <li>Kesto: 0 t 2 min 53 s</li>
+            <li>Pääosissa: Lassi Aaltonen, Onni Fischer, Eetu Pasonen</li>
+          </ul>
+        </section>
+      </div>
     </footer>
     <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
-    <script src="countdown.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
   </body>
 </html>

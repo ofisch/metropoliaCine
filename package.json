@@ -78,6 +78,7 @@
     "to-regex-range": "^5.0.1",
     "ts-interface-checker": "^0.1.13",
     "util-deprecate": "^1.0.2",
+    "videojs-youtube": "^3.0.1",
     "wrappy": "^1.0.2",
     "yaml": "^2.3.2"
   },

@@ -2,8 +2,6 @@
 
 const socket = io("http://localhost:3000");
 
-const currentRoom = "movie1";
-
 const user = document.getElementById("username");
 const joinForm = document.getElementById("join-form");
 const msgForm = document.getElementById("msg-form");
@@ -26,12 +24,11 @@ msgForm.addEventListener("submit", (event) => {
   }
 });
 
-//   onclick="document.getElementById('message').value += document.getElementById('emoji').value;"
-
 joinForm.addEventListener("submit", (event) => {
   event.preventDefault();
   if (user.value) {
-    const selectedRoom = currentRoom;
+    const selectedRoom = joinForm.getAttribute("data-room"); // Get room name from data-room attribute
+    console.log(selectedRoom);
     const nickname = user.value;
     socket.emit("joinRoom", { roomName: selectedRoom, nickname });
 
