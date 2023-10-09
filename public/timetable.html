@@ -51,7 +51,7 @@
             <li>
               <a
                 href="index.html"
-                class="block py-2 pl-3 pr-4 text-primary rounded hover:bg-gray-100 md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0"
+                class="block py-2 pl-3 pr-4 text-primary rounded duration-300 ease-in-out hover:bg-actionhover md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0"
                 aria-current="page"
                 >Home</a
               >
@@ -59,7 +59,7 @@
             <li>
               <a
                 href="#"
-                class="block py-2 pl-3 pr-4 text-primary rounded hover:bg-gray-100 md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0"
+                class="block py-2 pl-3 pr-4 text-primary rounded duration-300 ease-in-out hover:bg-actionhover md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0"
                 >Movies</a
               >
             </li>
@@ -73,7 +73,7 @@
             <li>
               <a
                 href="#"
-                class="block py-2 pl-3 pr-4 text-primary rounded hover:bg-gray-100 md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0"
+                class="block py-2 pl-3 pr-4 text-primary rounded duration-300 ease-in-out hover:bg-actionhover md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0"
                 >Contact</a
               >
             </li>
@@ -101,15 +101,28 @@
       </div>
 
       <div class="grid grid-cols-3 max-w-5xl text-center mx-auto">
-        <button id="prevMonth" class="hover:text-action">Previous month</button>
+        <button
+          id="prevMonth"
+          class="duration-300 ease-in-out hover:text-action"
+        >
+          Previous month
+        </button>
         <h3 id="month" class="py-6 text-xl text-secondary"></h3>
-        <button id="nextMonth" class="hover:text-action">Next month</button>
+        <button
+          id="nextMonth"
+          class="duration-300 ease-in-out hover:text-action"
+        >
+          Next month
+        </button>
       </div>
 
       <div id="week" class="py-6"></div>
       <div id="calendar" class="grid grid-cols-7 gap-2 max-w-5xl mx-auto"></div>
       <div class="pb-6 grid grid-cols-1">
-        <button id="currentMonth" class="hover:text-action">
+        <button
+          id="currentMonth"
+          class="duration-300 ease-in-out hover:text-action"
+        >
           Back to today
         </button>
       </div>
