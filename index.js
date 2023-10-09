@@ -8,7 +8,15 @@ const io = require("socket.io")(http);
 app.use(express.static(__dirname));
 
 const users = [];
-const rooms = ["live", "democompo", "mikko", "morning", "museo", "opiskelija"];
+const rooms = [
+  "live",
+  "democompo",
+  "mikko",
+  "morning",
+  "museo",
+  "opiskelija",
+  "main",
+];
 const history = [];
 const client = [];
 
