@@ -1,6 +1,6 @@
 "use strict";
 
-const socket = io("http://localhost:3000");
+const socket = io("https://mdds-server-onnif.northeurope.cloudapp.azure.com");
 
 const user = document.getElementById("username");
 const joinForm = document.getElementById("join-form");
