@@ -1,0 +1,62 @@
+/* Because of the SVG inliner, these don't work for icons */
+.vjs-theme-oma {
+  --vjs-theme-oma--primary: #dad2d8;
+  --vjs-theme-oma--secondary: #ef5d60;
+}
+
+/* Control Bar */
+.vjs-theme-oma .vjs-button > .vjs-icon-placeholder::before {
+  line-height: 1.55;
+}
+
+.vjs-theme-oma .vjs-control:not(.vjs-disabled, .vjs-time-control):hover {
+  color: var(--vjs-theme-oma--primary);
+  text-shadow: var(--vjs-theme-oma--secondary) 1px 0 10px;
+}
+
+.vjs-theme-oma .vjs-control-bar {
+  background: none;
+  margin-bottom: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+/* Play Button */
+.vjs-theme-oma .vjs-play-control {
+  font-size: 0.8em;
+}
+
+.vjs-theme-oma .vjs-play-control .vjs-icon-placeholder:before {
+  background-color: var(--vjs-theme-oma--secondary);
+  height: 1.5em;
+  width: 1.5em;
+  margin-top: 0.2em;
+  border-radius: 1em;
+  color: var(--vjs-theme-oma--primary);
+}
+
+.vjs-theme-oma .vjs-play-control:hover .vjs-icon-placeholder:before {
+  background-color: var(--vjs-theme-oma--primary);
+  color: var(--vjs-theme-oma--secondary);
+}
+
+/* Progress Bar */
+.vjs-theme-oma .vjs-progress-control:hover .vjs-progress-holder {
+  font-size: 1em;
+}
+
+.vjs-theme-oma .vjs-play-progress::before {
+  display: none;
+}
+
+.vjs-theme-oma .vjs-progress-holder {
+  border-radius: 0.2em;
+  height: 0.5em;
+  margin: 0;
+}
+
+.vjs-theme-oma .vjs-play-progress,
+.vjs-theme-oma .vjs-load-progress,
+.vjs-theme-oma .vjs-load-progress div {
+  border-radius: 0.2em;
+}
