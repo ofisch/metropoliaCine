@@ -42,13 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  function isOngoingMonth(year, month) {
+  const isOngoingMonth = (year, month) => {
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth();
 
     return year === currentYear && month === currentMonth;
-  }
+  };
 
   const generateCalendar = async (year, month) => {
     calendarDiv.innerHTML = "";
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateCalendar();
 
-  prevMonthButton.addEventListener("click", function () {
+  prevMonthButton.addEventListener("click", () => {
     currentMonth--;
     if (currentMonth < 0) {
       currentMonth = 11;
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
     selectMonth.value = currentMonth;
   });
 
-  nextMonthButton.addEventListener("click", function () {
+  nextMonthButton.addEventListener("click", () => {
     currentMonth++;
     if (currentMonth > 11) {
       currentMonth = 0;
@@ -165,14 +165,14 @@ document.addEventListener("DOMContentLoaded", () => {
     selectMonth.value = currentMonth;
   });
 
-  currentMonthButton.addEventListener("click", function () {
+  currentMonthButton.addEventListener("click", () => {
     currentYear = currentDate.getFullYear();
     currentMonth = currentDate.getMonth();
     updateCalendar();
     selectMonth.value = currentMonth;
   });
 
-  selectMonth.addEventListener("change", function () {
+  selectMonth.addEventListener("change", () => {
     currentMonth = parseInt(selectMonth.value);
     updateCalendar();
   });

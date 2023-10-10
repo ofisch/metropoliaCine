@@ -74,6 +74,13 @@
             </li>
             <li>
               <a
+                href="playback.html"
+                class="block py-2 pl-3 pr-4 text-primary rounded duration-300 ease-in-out hover:bg-actionhover md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0"
+                >Previous streams</a
+              >
+            </li>
+            <li>
+              <a
                 href="contactform.html"
                 class="block py-2 pl-3 pr-4 text-primary rounded duration-300 ease-in-out hover:bg-actionhover md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0"
                 >Contact</a
@@ -321,46 +328,52 @@
 
     </header>
 
-    <main class="grid grid-cols-1 max-w-screen-xl mx-auto gap-3">
-      <section class="rounded-lg w-full h-96 px-35 bg-secondary">
+    <main class="grid grid-cols-1 max-w-screen-xl pt-24 mx-auto gap-3">
+      <div class=" text-secondary text-center text-3xl">
+        <h2>Next event</h2>
+      </div>
+      <section class="rounded-lg w-full pb-20 bg-secondary">
         <div class="grid grid-cols-4 gap-4 max-w-5xl mx-auto">
-          <div class="col-span-4 text-primary text-center pt-20 text-2xl">
-            <h2>Next movie starts in:</h2>
+          <div class="col-span-4 self-center">
+            <h2 id="movietime" class="text-primary text-center pt-20 text-2xl">aika</h2>
           </div>
-          <div>
+          <div class="col-span-4 self-center">
+            <h2 id="moviename" class="text-primary text-center pt-20 text-2xl">elokuva nimi</h2>
+          </div>
+          <div class="self-center">
             <h2 id="day" class="text-primary text-center pt-20 text-2xl"></h2>
           </div>
-          <div>
+          <div class="self-center">
             <h2 id="hour" class="text-primary text-center pt-20 text-2xl"></h2>
           </div>
-          <div>
+          <div class="self-center">
             <h2
               id="minute"
               class="text-primary text-center pt-20 text-2xl"
             ></h2>
           </div>
-          <div>
+          <div class="self-center">
             <h2
               id="second"
               class="text-primary text-center pt-20 text-2xl"
             ></h2>
           </div>
-          <div>
+          <div class="self-center">
             <h2 class="text-primary text-center pt-20 text-2xl">Day</h2>
           </div>
-          <div>
+          <div class="self-center">
             <h2 class="text-primary text-center pt-20 text-2xl">Hour</h2>
           </div>
-          <div>
+          <div class="self-center">
             <h2 class="text-primary text-center pt-20 text-2xl">Minutes</h2>
           </div>
-          <div>
+          <div class="self-center">
             <h2 class="text-primary text-center pt-20 text-2xl">Seconds</h2>
           </div>
         </div>
       </section>
 
-      <h3 class="text-secondary text-center pt-10 pb-5 text-3xl">Movies</h3>
+      <h3 class="text-secondary text-center pt-24 text-3xl">Events</h3>
 
       <section class="bg-primarydark rounded-lg py-28 w-full flex justify-center items-center">
         <a href="democompo.html">
@@ -368,7 +381,7 @@
           class="grid grid-cols-1 gap-4 self-center w-full md:max-w-5xl md:grid-cols-2"
         >
           <div
-            class="order-1 w-full h-64 bg-testi bg-no-repeat bg-cover bg-center rounded-lg max-w-md mx-auto"
+            class="order-1 w-full h-64 bg-democompo bg-no-repeat bg-cover bg-center rounded-lg max-w-md mx-auto"
           >
             <div
               class="bg-black w-full h-full rounded-lg bg-opacity-30 hover:bg-opacity-10 transition ease-in-out delay-100 duration-300"
@@ -398,7 +411,7 @@
           class="grid grid-cols-1 gap-4 self-center w-full md:max-w-5xl md:grid-cols-2"
         >
           <div
-            class="order-1 md:order-2 w-full h-64 bg-testi bg-no-repeat bg-cover bg-center rounded-lg max-w-md mx-auto"
+            class="order-1 md:order-2 w-full h-64 bg-mikko bg-no-repeat bg-cover bg-center rounded-lg max-w-md mx-auto"
           >
             <div
               class="bg-black w-full h-full rounded-lg bg-opacity-30 hover:bg-opacity-10 transition ease-in-out delay-100 duration-300"
@@ -426,7 +439,7 @@
           class="grid grid-cols-1 gap-4 self-center w-full md:max-w-5xl md:grid-cols-2"
         >
           <div
-            class="order-1 w-full h-64 bg-testi bg-no-repeat bg-cover bg-center rounded-lg max-w-md mx-auto"
+            class="order-1 w-full h-64 bg-morning bg-no-repeat bg-cover bg-center rounded-lg max-w-md mx-auto"
           >
             <div
               class="bg-black w-full h-full rounded-lg bg-opacity-30 hover:bg-opacity-10 transition ease-in-out delay-100 duration-300"
@@ -456,7 +469,7 @@
           class="grid grid-cols-1 gap-4 self-center w-full md:max-w-5xl md:grid-cols-2"
         >
           <div
-            class="order-1 md:order-2 w-full h-64 bg-testi bg-no-repeat bg-cover bg-center rounded-lg max-w-md mx-auto"
+            class="order-1 md:order-2 w-full h-64 bg-museo bg-no-repeat bg-cover bg-center rounded-lg max-w-md mx-auto"
           >
             <div
               class="bg-black w-full h-full rounded-lg bg-opacity-30 hover:bg-opacity-10 transition ease-in-out delay-100 duration-300"
@@ -484,7 +497,7 @@
           class="grid grid-cols-1 gap-4 self-center w-full md:max-w-5xl md:grid-cols-2"
         >
           <div
-            class="order-1 w-full h-64 bg-testi bg-no-repeat bg-cover bg-center rounded-lg max-w-md mx-auto"
+            class="order-1 w-full h-64 bg-opiskelija bg-no-repeat bg-cover bg-center rounded-lg max-w-md mx-auto"
           >
             <div
               class="bg-black w-full h-full rounded-lg bg-opacity-30 hover:bg-opacity-10 transition ease-in-out delay-100 duration-300"
@@ -505,24 +518,19 @@
         </div>
       </a>
       </section>
-
-      <button class="hover:text-action bg-secondary w-fit justify-self-center mt-5 mb-5 px-4 py-2 rounded">
-        <a href="playback.html">
-          Previous streams
-        </a>
-      </button>
     </main>
-    <footer class=" h-24 flex items-center justify-center">
+    <footer class="mt-5 h-24 flex items-center justify-center">
       <div class="bg-primarydark w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between">
           <h3 class="text-2xl text-secondary">Metropolia Cine</h3>
           <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
             <li>
-                <a href="#" class="mr-4 md:mr-6 block py-2 pl-3 pr-4 text-primary rounded duration-300 ease-in-out hover:bg-actionhover md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0">About</a>
+                <a href="#" class="mr-4 md:mr-6 block py-2 pl-3 pr-4 text-secondary rounded duration-300 ease-in-out hover:bg-actionhover md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0">About</a>
             </li>
             <li>
-              <a href="contactform.html" class="mr-4 md:mr-6 block py-2 pl-3 pr-4 text-primary rounded duration-300 ease-in-out hover:bg-actionhover md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0">Contact</a>
+              <a href="contactform.html" class="mr-4 md:mr-6 block py-2 pl-3 pr-4 text-secondary rounded duration-300 ease-in-out hover:bg-actionhover md:hover:bg-transparent md:text-secondary md:border-0 md:hover:text-action md:p-0">Contact</a>
             </li>
+            </ul>
         </div>
       </div>
     </footer>

@@ -30,6 +30,11 @@ module.exports = {
       },
       backgroundImage: {
         testi: "url('/images/porsche992gt3.jpg')",
+        democompo: "url('/images/democompo-thumbnail.png')",
+        mikko: "url('/images/mikko-thumbnail.png')",
+        morning: "url('/images/morning-thumbnail.png')",
+        museo: "url('/images/museo-thumbnail.png')",
+        opiskelija: "url('/images/opiskelija-thumbnail.png')",
       },
     },
   },

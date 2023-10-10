@@ -11,17 +11,17 @@ const getInfo = async () => {
   }
 };
 //converts object items into a date object
-function convertTimeToDate(dataObject) {
+const convertTimeToDate = (dataObject) => {
   const year = dataObject.year;
   const month = dataObject.month - 1; // Months in JavaScript Date are 0-based
   const date = dataObject.date;
-  const timeParts = dataObject.time.split('.');
+  const timeParts = dataObject.time.split(".");
   const hours = parseInt(timeParts[0], 10);
   const minutes = parseInt(timeParts[1], 10);
 
   return new Date(year, month, date, hours, minutes);
-}
-function findNextUpcomingDate(datesArray) {
+};
+const findNextUpcomingDate = (datesArray) => {
   const now = new Date().getTime();
   let closestDate = null;
   let timeDifference = Infinity;
@@ -35,12 +35,22 @@ function findNextUpcomingDate(datesArray) {
   });
 
   return closestDate;
-}
+};
 const countdown = async () => {
-
+  let nextEvent;
   const countDate = findNextUpcomingDate(allEventsAsDates);
   const now = new Date().getTime();
   const gap = countDate - now;
+  for (let i = 0; i < allEventsAsDates.length; i++) {
+    if (countDate == allEventsAsDates[i]) {
+      nextEvent = allEvents[i];
+      i++;
+    } else {
+      i++;
+    }
+  }
+  const eventTitle = nextEvent.event;
+  const eventTime = nextEvent.time;
 
   const second = 1000;
   const minute = second * 60;
@@ -56,14 +66,19 @@ const countdown = async () => {
   let hourEle = document.getElementById("hour");
   let minuteEle = document.getElementById("minute");
   let secondEle = document.getElementById("second");
+  let movieName = document.getElementById("moviename");
+  let movieTime = document.getElementById("movietime");
+
   dayEle.innerHTML = textDay;
   hourEle.innerHTML = textHour;
   minuteEle.innerHTML = textMinute;
   secondEle.innerHTML = textSecond;
+  movieName.innerHTML = eventTitle;
+  movieTime.innerHTML = eventTime;
 };
 
 //sort function for dates
-function compareDates(a, b) {
+const compareDates = (a, b) => {
   // Compare by year
   if (a.year !== b.year) {
     return a.year - b.year;
@@ -80,11 +95,11 @@ function compareDates(a, b) {
   }
 
   // Compare by time (convert to a common format for comparison)
-  const timeA = a.time.includes('-') ? a.time.split('-')[0] : a.time;
-  const timeB = b.time.includes('-') ? b.time.split('-')[0] : b.time;
+  const timeA = a.time.includes("-") ? a.time.split("-")[0] : a.time;
+  const timeB = b.time.includes("-") ? b.time.split("-")[0] : b.time;
 
   return timeA.localeCompare(timeB);
-}
+};
 
 const timesort = (jsonData) => {
   const transformedData = [];
@@ -93,7 +108,7 @@ const timesort = (jsonData) => {
     if (jsonData.hasOwnProperty(dateIndex)) {
       const date = parseInt(dateIndex); // Convert the dateIndex to a number
       const events = jsonData[dateIndex];
-  
+
       events.forEach((eventObj) => {
         const transformedObj = {
           date: date,
@@ -110,12 +125,10 @@ const timesort = (jsonData) => {
 };
 getInfo()
   .then((times) => {
-    data = times; // You can access the object returned by getInfo here
+    data = times;
     timesort(data);
-    console.log(allEvents);
-    for(let i = 0;i < allEvents.length; i++){
+    for (let i = 0; i < allEvents.length; i++) {
       allEventsAsDates.push(convertTimeToDate(allEvents[i]));
-      console.log(convertTimeToDate(allEvents[i]));
     }
   })
   .catch((error) => {
