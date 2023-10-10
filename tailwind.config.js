@@ -35,6 +35,7 @@ module.exports = {
         morning: "url('/images/morning-thumbnail.png')",
         museo: "url('/images/museo-thumbnail.png')",
         opiskelija: "url('/images/opiskelija-thumbnail.png')",
+        offline: "url('/images/offline.jpg')",
       },
     },
   },
