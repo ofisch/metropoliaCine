@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const beforeScheduledDate = () => {
     const currentDate = new Date();
-    const democompoDate = new Date("2023-10-10T19:49:00");
+    const democompoDate = new Date("2023-10-11T13:00:00");
     const mikkoDate = new Date("2023-11-16T18:00:00");
     const morningDate = new Date("2023-10-20T12:00:00");
     const museoDate = new Date("2023-11-08T19:20:00");
