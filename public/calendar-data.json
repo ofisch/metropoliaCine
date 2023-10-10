@@ -27,13 +27,11 @@
       "month": 10,
       "time": "12.00 - 16.00",
       "event": "Live opening"
-    }
-  ],
-  "12": [
+    },
     {
       "year": 2023,
       "month": 10,
-      "time": "20.00",
+      "time": "13.00",
       "event": "Democompo"
     }
   ],
