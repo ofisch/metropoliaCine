@@ -17,6 +17,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="video-js-theme/theme.css" />
     <script src="/socket.io/socket.io.js"></script>
     <script src="chat.js" defer></script>
     <script>
@@ -106,38 +107,13 @@
       class="grid grid-cols-1 w-full md:grid-cols-2 text-secondary py-2 gap-3 max-w-screen-xl mx-auto"
     >
       <div class="px-4 w-full">
-        <h2 class="py-2">
-          Metropolia Cine - deploytaun sivun testi, Oct 09, 2023
-        </h2>
-        <video
-          id="my-video"
-          controls
-          preload="auto"
-          data-setup="{}"
-          class="video-js vjs-fluid vjs-big-play-centered aspect-video md:w-2/3"
-        >
-          <source
-            src="https://75ef2e1cdb7f.entrypoint.cloud.wowza.com/app-021t9h44/ngrp:e93671c3_all/playlist.m3u8"
-            type="application/x-mpegURL"
-          />
-          <p class="vjs-no-js">
-            To view this video please enable JavaScript, and consider upgrading
-            to a web browser that
-            <a href="https://videojs.com/html5-video-support/" target="_blank"
-              >supports HTML5 video</a
-            >
-          </p>
-        </video>
-      </div>
-
-      <div class="px-4 w-full">
         <h2 class="py-2">Metropolia Cine - testi, Oct 06, 2023</h2>
         <video
           id="my-video"
           controls
           preload="auto"
           data-setup="{}"
-          class="video-js vjs-fluid vjs-big-play-centered aspect-video md:w-2/3"
+          class="video-js vjs-theme-oma vjs-fluid vjs-big-play-centered aspect-video md:w-2/3"
         >
           <source
             src="https://cdn3.wowza.com/2/eVUyM2ZpK2oxMzZN/cURUR3lR/hls/05v0dcvd/playlist.m3u8"
@@ -160,7 +136,7 @@
           controls
           preload="auto"
           data-setup="{}"
-          class="video-js vjs-fluid vjs-big-play-centered aspect-video md:w-2/3"
+          class="video-js vjs-theme-oma vjs-fluid vjs-big-play-centered aspect-video md:w-2/3"
         >
           <source
             src="https://cdn3.wowza.com/2/eVUyM2ZpK2oxMzZN/cURUR3lR/hls/hjw56jrr/playlist.m3u8"
